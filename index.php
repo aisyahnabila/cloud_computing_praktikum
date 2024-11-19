@@ -13,7 +13,7 @@ include 'controller/viewitems.php'
 
     <link rel="stylesheet" href="assets/bootstrap/custom-bootstrap.css">
     <?php if (isset($_GET['status']) && $_GET['status'] == 'success'): ?>
-        <div class="alert alert-success">Transaksi berhasil diproses!</div>
+        <div class="alert alert-success">Transaksi Berhasil Insyaallah!</div>
     <?php endif; ?>
 
 </head>
