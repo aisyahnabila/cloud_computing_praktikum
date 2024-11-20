@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
 include 'controller/viewitems.php'
-?>
+    ?>
 
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@ include 'controller/viewitems.php'
     <title>Mieque</title>
     <link rel="stylesheet" href="assets/style/user.css">
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.css">
-
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/bootstrap/custom-bootstrap.css">
     <?php if (isset($_GET['status']) && $_GET['status'] == 'success'): ?>
         <div class="alert alert-success">Transaksi Berhasil Insyaallah!</div>
@@ -19,11 +19,11 @@ include 'controller/viewitems.php'
 </head>
 
 <body>
-
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar Kategori -->
-            <aside class="col-md-2 sidebar" style="position: fixed; top: 0; left: 0; height: 100%; z-index: 1000;">
+            <aside class="col-md-2 sidebar bg-light"
+                style="position: fixed; top: 0; left: 0; height: 100%; z-index: 1000;">
                 <!-- Logo dan Nama -->
                 <div class="text-center mb-5">
                     <img src="assets/img/MIEQUE.png" alt="Logo" class="img-fluid rounded-circle mb-2">
@@ -36,51 +36,47 @@ include 'controller/viewitems.php'
                     <a href="#" class="category-btn active-category fw-bold">All Menu</a>
                     <?php
                     foreach ($category as $row) {
-                    ?>
+                        ?>
                         <a href="#" class="category-btn"><?php echo $row['nama'] ?></a>
-                    <?php
+                        <?php
                     }
                     ?>
                 </div>
                 <!-- Tambahkan kategori lain jika diperlukan -->
             </aside>
 
-
             <!-- Bagian Utama: Daftar Menu -->
-            <main class="main-content col-md-7 p-4">
-                <div></div>
-                <h5>Pilih menu</h5>
-                <div class="row">
-                    <!-- Contoh Menu Card -->
-                    <?php
-                    foreach ($data as $row) {
-                        $modalId = "editModal" . $row['id'];
-                        $formId = "editItemForm" . $row['id'];
-                    ?>
-                        <div class="col-md-6 mb-3 menu-item" data-id="<?php echo $row['id']; ?>" data-kategori="<?php echo $row['kategori_nama']; ?>">
-                            <div class="card border-0">
-                                <div class="card-body">
-                                    <img src="admin/uploads/<?php echo $row['url_foto']; ?>"
-                                        class="img-fluid"
-                                        alt="Menu Image"
-                                        style="width: 100%; height: 200px; object-fit: cover;">
-                                    <h6 class="mt-2"><?php echo $row['nama']; ?></h6>
-                                    <p>Rp <?php echo number_format($row['harga'], 0, ',', '.'); ?></p>
-                                    <button class="btn btn-red button-add mt-4 w-100">Add To Cart</button>
+            <div class="col-md-7 offset-md-2">
+                <div class="container">
+                    <div class="row">
+                        <h2>PILIH MENU</h2>
+                        <?php
+                        foreach ($data as $row) {
+                            $modalId = "editModal" . $row['id'];
+                            $formId = "editItemForm" . $row['id'];
+                            ?>
+                            <div class="col-6 col-md-4 mb-3 menu-item" data-id="<?php echo $row['id']; ?>"
+                                data-kategori="<?php echo $row['kategori_nama']; ?>">
+                                <div class="card border-0">
+                                    <div class="card-body">
+                                        <img src="admin/uploads/<?php echo $row['url_foto']; ?>" class="img-fluid"
+                                            alt="Menu Image" style="width: 100%; height: 200px; object-fit: cover;">
+                                        <h6 class="mt-2"><?php echo $row['nama']; ?></h6>
+                                        <p>Rp <?php echo number_format($row['harga'], 0, ',', '.'); ?></p>
+                                        <button class="btn btn-red button-add mt-4 w-100">Add To Cart</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php
-                    }
-                    ?>
-
-
-                    <!-- Tambahkan lebih banyak menu sesuai kebutuhan -->
+                            <?php
+                        }
+                        ?>
+                    </div>
                 </div>
-            </main>
+            </div>
 
             <!-- Sidebar Rincian Pesanan -->
-            <aside class="col-md-3 p-4 bg-white right-sidebar">
+            <aside class="col-md-3 p-4 bg-white right-sidebar"
+                style="position: fixed; top: 0; right: 0; height: 100%; z-index: 1000;">
                 <!-- Judul untuk List Menu -->
                 <h5>Order List</h5>
 
@@ -96,17 +92,18 @@ include 'controller/viewitems.php'
                 <!-- Opsi Pembayaran -->
                 <div class="mt-4">
                     <div class="d-grid gap-2">
-                        <button class="btn btn-blue rounded-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Bayar Di Kasir</button>
+                        <button class="btn btn-blue rounded-5" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Bayar Di Kasir</button>
                     </div>
                 </div>
             </aside>
 
-
             <!-- MODAL -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                        <div class="modal-header ">
+                        <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Konfirmasi Transaksi</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -126,18 +123,17 @@ include 'controller/viewitems.php'
                                 <button type="submit" class="btn btn-blue">Proses Transaksi</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
+
     <script src="assets/bootstrap/script.js"></script>
     <script>
         // Event Listener untuk tombol kategori
         document.querySelectorAll('.category-btn').forEach(button => {
-            button.addEventListener('click', function(event) {
+            button.addEventListener('click', function (event) {
                 event.preventDefault();
 
                 // Dapatkan kategori yang diklik
@@ -295,7 +291,9 @@ include 'controller/viewitems.php'
             });
         });
     </script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
 
